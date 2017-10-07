@@ -1,0 +1,84 @@
+<form>    <!-- template driven -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2">
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+        <form (ngSubmit)="submitMe(f)" #f="ngForm">
+          <div class="form-group">
+
+            <label>First Name</label>
+              <input type="text" class="form-control" placeholder="FirstName" required name="FirstName" ngModel #name="ngModel" minlength="5" maxlength="15">
+          </div>
+          <div  class="alert alert-danger text-center" *ngIf="!name.valid && name.touched">
+          <div *ngIf="name.errors.required">FirstName is required!</div>
+          <div *ngIf="name.errors.minlength">can't be less than 5 characters</div>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+              <input type="text" class="form-control" placeholder="LastName" required name="LastName" ngModel #last="ngModel" minlength="5" maxlength="15">
+          </div>
+          <div  class="alert alert-danger text-center" *ngIf="!last.valid && last.touched">
+          <div *ngIf="last.errors.required">LastName is required!</div>
+          <div *ngIf="last.errors.minlength">can't be less than 5 characters</div>
+          </div>
+                  
+          <div class="form-group">
+            <label>Email</label>
+              <input type="email" class="form-control" placeholder="name@example.com" required name="Email" ngModel #email="ngModel">
+          </div>
+          <div  class="alert alert-danger text-center" *ngIf="!email.valid && email.touched">
+          <div *ngIf="email.errors.required">Email is required!</div>
+          </div>
+
+          <div class="form-group">
+            <label>Phone</label>
+              <input type="text" pattern="^[0-9]*$" #phone="ngModel" class="form-control" required placeholder="Phone" name="Phone" minlength="11" maxlength="11" ngModel >
+          </div>
+          <div class="alert alert-danger text-center" *ngIf="!phone.valid && phone.touched">
+            <div *ngIf="phone.errors.pattern">accepts only numbers</div>
+            <div *ngIf="phone.errors.required">Phone is required!</div>
+            <div *ngIf="phone.errors.minlength">can't be less than 11 numbers</div>
+
+
+          </div>
+          <div class="form-group">
+            <label>Birth Date</label>
+              <input type="date" class="form-control" required placeholder="Date of Birth" name="Birth" ngModel #date="ngModel">
+          </div>
+          <div  class="alert alert-danger text-center" *ngIf="!date.valid && date.touched">
+          <div *ngIf="date.errors.required">Birthday is required!</div>
+          </div>
+
+            <select class="form-control" required ngModel name="committe" #select="ngModel">
+              <option value="IT">IT</option>
+              <option value="DE">Designers</option>
+            </select>
+          <div  class="alert alert-danger text-center" *ngIf="!select.valid && select.touched">
+          <div *ngIf="select.errors.required">you must select committe</div>
+          </div>
+
+
+
+            <br>
+             <input type="submit" class="btn btn-primary" [disabled]="!f.valid" value="submit">
+
+        
+        </form>
+        
+       <!--  <input type="text" placeholder="name" [(ngModel)]="name" name="data">
+        <input type="text" placeholder="passwords" [(ngModel)]="password" name="data">
+
+        <button class="btn btn-primary" (click)="submitMe(name)">go</button>
+ -->
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2">
+      </div>
+
+    </div>
+  </div>
+</form>
+
+
+
+<!-- DRY dont repeate yourself--><!-- CRUD  create read update delete  post get put delete-->

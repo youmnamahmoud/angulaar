@@ -1,0 +1,9 @@
+<app-navbar></app-navbar>
+<app-form></app-form>
+
+<button (click)="getDataFromService()">get</button>
+<ul class="list-group" *ngIf="result" >
+	<li class="list-group-item" *ngFor="let single of result">
+		{{single.id}}
+	</li>
+</ul>
